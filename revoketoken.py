@@ -1,3 +1,4 @@
+# simple code for revoking the token 
 import requests
 
 requests.post('https://oauth2.googleapis.com/revoke',
