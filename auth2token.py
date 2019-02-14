@@ -3,10 +3,8 @@
 # the code is appended the the redirect uri
 import requests 
 
-# defining the api-endpoint 
 API_ENDPOINT = "https://oauth2.googleapis.com/token"
-
-# data to be sent to api 
+ 
 data = {'code':'4/8QA3W2HuTc1EAaecmrLsKgmjaqh9Jjhvv3mo8fFoyVXUgDAq7G_oofGnI2FdNnqiA7nzKRUylC3GMDQ7AuAH_MM', 
       'redirect_uri':'http://localhost:8080/', 
       'client_id':'887597828597-kjg09tgnbhd6sc8pr8r32v71168v8dd7.apps.googleusercontent.com', 
