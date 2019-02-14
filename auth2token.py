@@ -7,11 +7,11 @@ import requests
 API_ENDPOINT = "https://oauth2.googleapis.com/token"
 
 # data to be sent to api 
-data = {'code':'4/8QDWSHVgv8ppj0tY2y4RtaVUwPQspKsLAUPuDe8ckRIheCRLAC9o4Cgu5swwOa-VchvIrpMZtuKR9O4DvdnlV6c', 
+data = {'code':'4/8QA3W2HuTc1EAaecmrLsKgmjaqh9Jjhvv3mo8fFoyVXUgDAq7G_oofGnI2FdNnqiA7nzKRUylC3GMDQ7AuAH_MM', 
       'redirect_uri':'http://localhost:8080/', 
       'client_id':'887597828597-kjg09tgnbhd6sc8pr8r32v71168v8dd7.apps.googleusercontent.com', 
       'client_secret':'-WwzKK48Y5Mq6wa5RhvUAV-1',
-      'grant_type' : 'refresh_token',
+      'grant_type' : 'authorization_code',
       'scope' : 'https://www.googleapis.com/auth/contacts https://www.googleapis.com/auth/contacts.readonly https://www.googleapis.com/auth/userinfo.profile',
       'access_type' : 'offline'} 
 
