@@ -1,4 +1,6 @@
-# importing the requests library 
+# this code will exchange the authorization code with a access token
+# authorization code could be acquired by running the authurlcreate.py script
+# the code is appended the the redirect uri
 import requests 
 
 # defining the api-endpoint 

@@ -1,3 +1,6 @@
+# this code creates a url to get the authorization code from google server
+# then it opens the url in a web browser
+
 import urllib.parse
 import json
 import webbrowser

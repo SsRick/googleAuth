@@ -1,7 +1,9 @@
-# importing the requests library 
+# This code will refresh a token which has expired.
+# requirement: refresh token
+# note: refresh token is only acquired for the first every authorization by google server
+# keep this token safe
 import requests 
 
-# defining the api-endpoint 
 API_ENDPOINT = "https://oauth2.googleapis.com/token"
 
 # data to be sent to api 
