@@ -42,6 +42,7 @@ function openaws() {
    sendrequest(url = 'https://fof0qebtce.execute-api.us-west-2.amazonaws.com/corstest', function(response){
       var obj = JSON.parse(response);
       console.log(obj.url);
+      //open the url in the same tab
       window.location.replace(obj.url);
    });
    
