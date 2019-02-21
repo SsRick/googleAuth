@@ -13,7 +13,7 @@ def lambda_handler(event, context):
     API_ENDPOINT = jsonData["web"]["token_uri"]
     print(event["refresh_token"])
     data = {'refresh_token':event["refresh_token"], 
-        'redirect_uri':'jsonData["web"]["redirect_uris"][0]', 
+        'redirect_uri':jsonData["web"]["redirect_uris"][0], 
         'client_id':jsonData["web"]["client_id"], 
         'client_secret':jsonData["web"]["client_secret"],
         'grant_type' : 'refresh_token',
