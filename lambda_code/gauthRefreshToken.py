@@ -1,12 +1,21 @@
 from botocore.vendored import requests
+import json
+import boto3
+
+s3 = boto3.client('s3')
 
 def lambda_handler(event, context):
-    API_ENDPOINT = "https://oauth2.googleapis.com/token"
+    bucket = 'gauth-bucket-test'
+    key = 'cred.json'
+    tokenFile = 'refreshed_token.json'
+    response = s3.get_object(Bucket = bucket, Key = key)
+    jsonData = json.loads(response['Body'].read().decode('utf-8'))
+    API_ENDPOINT = jsonData["web"]["token_uri"]
     print(event["refresh_token"])
     data = {'refresh_token':event["refresh_token"], 
-        'redirect_uri':'http://localhost:8080/', 
-        'client_id':'887597828597-kjg09tgnbhd6sc8pr8r32v71168v8dd7.apps.googleusercontent.com', 
-        'client_secret':'-WwzKK48Y5Mq6wa5RhvUAV-1',
+        'redirect_uri':'jsonData["web"]["redirect_uris"][0]', 
+        'client_id':jsonData["web"]["client_id"], 
+        'client_secret':jsonData["web"]["client_secret"],
         'grant_type' : 'refresh_token',
         'scope' : 'https://www.googleapis.com/auth/contacts https://www.googleapis.com/auth/contacts.readonly https://www.googleapis.com/auth/userinfo.profile',
         'access_type' : 'offline'} 
@@ -18,7 +27,12 @@ def lambda_handler(event, context):
     response = r.text 
     print(response)
     
-    return response
+    body = json.dumps(response)
+    response = s3.put_object(Bucket = bucket,
+        Key = tokenFile,
+        Body = body,
+        ContentType='application/json')
+    # return response
 
 
 
