@@ -44,8 +44,26 @@ function getloginurl() {
     myjson = sendrequest(url = 'https://fof0qebtce.execute-api.us-west-2.amazonaws.com/postCorTest', data, function(response) {
         var obj = JSON.parse(response);
         console.log(obj.url);
-        //open the url in the same tab
-        //window.location.replace(obj.url);
         window.open(obj.url)
+    });
+}
+
+function exchangetoken() {
+    const form = document.getElementsByClassName('theform')[0];
+    const data = formToJSON(form.elements);
+    myjson = sendrequest(url = 'https://kdl7hllpzh.execute-api.us-west-2.amazonaws.com/testing', data, function(response) {
+        var obj = JSON.parse(response);
+        
+        document.getElementById("json").innerHTML = JSON.stringify(obj, undefined, 2);
+    });
+}
+
+function exchangetoken() {
+    const form = document.getElementsByClassName('theform')[0];
+    const data = formToJSON(form.elements);
+    myjson = sendrequest(url = 'https://udcoamskfi.execute-api.us-west-2.amazonaws.com/refreshing', data, function(response) {
+        var obj = JSON.parse(response);
+        
+        document.getElementById("json").innerHTML = JSON.stringify(obj, undefined, 2);
     });
 }

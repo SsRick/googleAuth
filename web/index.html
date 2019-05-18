@@ -18,13 +18,22 @@
             client_secret: <input name="client_secret" type="text"> <br>
             redirect_uri: <input name="redirect_uri" type="text"> <br>
             scopes: <input name="scope" type="text"> <br>
+            auth_code: <input name="code" type="text"> <br>
+            refresh_token: <input name="refresh_token" type="text"> <br>
               
          </form>
          <button onclick="getloginurl()">
             Click to login
         </button>
-        <button onclick="openaws()">
+        <button onclick="exchangetoken()">
             Click to exchange token
         </button>
+        <button onclick="exchangetoken()">
+            Click to refresh token
+        </button>
+        <br>
+        <br>
+        <pre id="json"></pre>
+
     </body>
 </html>
