@@ -4,6 +4,7 @@ function createCORSRequest(method, url) {
     if ("withCredentials" in xhr) {
         // XHR for Chrome/Firefox/Opera/Safari.
         xhr.open(method, url, true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     } else if (typeof XDomainRequest != "undefined") {
         // XDomainRequest for IE.
         xhr = new XDomainRequest();
@@ -15,9 +16,9 @@ function createCORSRequest(method, url) {
     return xhr;
 }
 // Make CORS request.
-function sendrequest(url, callback) {
+function sendrequest(url, thejson, callback) {
     //var url = 'https://fof0qebtce.execute-api.us-west-2.amazonaws.com/corstest';
-    var xhr = createCORSRequest('GET', url);
+    var xhr = createCORSRequest('POST', url);
     if (!xhr) {
         alert('CORS not supported');
         return;
@@ -30,14 +31,21 @@ function sendrequest(url, callback) {
     xhr.onerror = function() {
         alert('Error making the request.');
     };
-    xhr.send();
+    xhr.send(JSON.stringify(thejson));
 }
+const formToJSON = elements => [].reduce.call(elements, (data, element) => {
+    data[element.name] = element.value;
+    return data;
+}, {});
 
-function openaws() {
-    sendrequest(url = 'https://fof0qebtce.execute-api.us-west-2.amazonaws.com/corstest', function(response) {
+function getloginurl() {
+    const form = document.getElementsByClassName('theform')[0];
+    const data = formToJSON(form.elements);
+    myjson = sendrequest(url = 'https://fof0qebtce.execute-api.us-west-2.amazonaws.com/postCorTest', data, function(response) {
         var obj = JSON.parse(response);
         console.log(obj.url);
         //open the url in the same tab
-        window.location.replace(obj.url);
+        //window.location.replace(obj.url);
+        window.open(obj.url)
     });
 }
