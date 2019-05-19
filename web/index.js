@@ -53,7 +53,6 @@ function exchangetoken() {
     const data = formToJSON(form.elements);
     myjson = sendrequest(url = 'https://kdl7hllpzh.execute-api.us-west-2.amazonaws.com/testing', data, function(response) {
         var obj = JSON.parse(response);
-        
         document.getElementById("json").innerHTML = JSON.stringify(obj, undefined, 2);
     });
 }
@@ -63,7 +62,32 @@ function refeshtoken() {
     const data = formToJSON(form.elements);
     myjson = sendrequest(url = 'https://udcoamskfi.execute-api.us-west-2.amazonaws.com/refreshing', data, function(response) {
         var obj = JSON.parse(response);
-        
         document.getElementById("json").innerHTML = JSON.stringify(obj, undefined, 2);
     });
+}
+
+function fillForm(object) {
+   document.getElementById('client_id').value=object.web.client_id;
+   document.getElementById('auth_uri').value=object.web.auth_uri;
+   document.getElementById('token_uri').value=object.web.token_uri;
+   document.getElementById('client_secret').value=object.web.client_secret;
+   document.getElementById('redirect_uri').value=object.web.redirect_uris[0];
+}
+
+
+window.onload = function() {
+    (function() {
+        function onChange(event) {
+            var reader = new FileReader();
+            reader.onload = onReaderLoad;
+            reader.readAsText(event.target.files[0]);
+        }
+
+        function onReaderLoad(event) {
+            console.log(event.target.result);
+            var obj = JSON.parse(event.target.result);
+            fillForm(obj)
+        }
+        document.getElementById('file').addEventListener('change', onChange);
+    }());
 }
