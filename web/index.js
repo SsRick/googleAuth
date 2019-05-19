@@ -58,7 +58,7 @@ function exchangetoken() {
     });
 }
 
-function exchangetoken() {
+function refeshtoken() {
     const form = document.getElementsByClassName('theform')[0];
     const data = formToJSON(form.elements);
     myjson = sendrequest(url = 'https://udcoamskfi.execute-api.us-west-2.amazonaws.com/refreshing', data, function(response) {

@@ -5,6 +5,34 @@
         </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         </meta>
+        <style type="text/css">
+           .dot {
+  height: 15px;
+  width: 15px;
+  background-color: #00cc00;
+  border-radius: 50%;
+  display: inline-block;
+}
+.button {
+  background-color: #00cc00; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.loginbutton {background-color: #00cc00;}
+.exchangebutton {background-color: #6666ff;}
+.refreshtoken {background-color: #ff1a1a;}
+
+.logindot {background-color: #00cc00;}
+.exchangedot {background-color: #6666ff;}
+.refreshdot {background-color: #ff1a1a;}
+
+
+        </style>
     </head>
     <body>
       <script src="index.js" type="text/javascript"></script>
@@ -12,23 +40,23 @@
             Authorization portal
         </h2>
         <form class="theform">
-            client_id: <input name="client_id" type="text">  <br>
-            auth_uri: <input name="auth_uri" type="text"> <br>
-            token_uri: <input name="token_uri" type="text"> <br>
-            client_secret: <input name="client_secret" type="text"> <br>
-            redirect_uri: <input name="redirect_uri" type="text"> <br>
-            scopes: <input name="scope" type="text"> <br>
-            auth_code: <input name="code" type="text"> <br>
-            refresh_token: <input name="refresh_token" type="text"> <br>
+            client_id: <input name="client_id" type="text"> <span class="dot logindot"></span> <span class="dot exchangedot"></span> <span class="dot refreshdot"></span> <br><br>
+            auth_uri: <input name="auth_uri" type="text"> <span class="dot logindot"></span> <br><br>
+            token_uri: <input name="token_uri" type="text"> <span class="dot exchangedot"></span> <span class="dot refreshdot"></span> <br><br>
+            client_secret: <input name="client_secret" type="text"> <span class="dot exchangedot"></span> <span class="dot refreshdot"></span> <br><br>
+            redirect_uri: <input name="redirect_uri" type="text"> <span class="dot logindot"></span> <span class="dot exchangedot"></span> <span class="dot refreshdot"></span> <br><br>
+            scopes: <input name="scope" type="text"> <span class="dot logindot"></span> <span class="dot exchangedot"></span> <span class="dot refreshdot"></span> <br><br>
+            auth_code: <input name="code" type="text"> <span class="dot exchangedot"></span> <br><br>
+            refresh_token: <input name="refresh_token" type="text"> <span class="dot refreshdot"></span> <br>
               
          </form>
-         <button onclick="getloginurl()">
+         <button onclick="getloginurl()" class="button loginbutton">
             Click to login
         </button>
-        <button onclick="exchangetoken()">
+        <button onclick="exchangetoken()" class="button exchangebutton">
             Click to exchange token
         </button>
-        <button onclick="exchangetoken()">
+        <button onclick="refeshtoken()" class="button refreshtoken">
             Click to refresh token
         </button>
         <br>
